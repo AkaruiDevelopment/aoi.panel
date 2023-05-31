@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>@akarui/aoi.panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.13/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.13/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.13/dist/js/uikit-icons.min.js"></script>
+    <style>
+      
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888; 
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+    </style>
+    <style>
+		  @import url("https://fonts.googleapis.com/css?family=Dosis:300,400,700,800");
+
+        html, body {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            /*overflow: hidden;*/
+            background-color: #1e1e1e;
+        }
+        #container{
+        position: absolute;
+        /*overflow: hidden;*/
+        height:100%;
+        background-color: #1e1e1e;
+        width:100%;
+        }
+        
+
+    </style>
+    <style>
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
+      </style>
+	
+</head>
+<body>
+	
+	
+    <nav class="uk-navbar-container" style="background-color:#000000;border-radius: 30px;margin: 20px;padding: 10px;">
+        <div class="uk-container">
+            <div uk-navbar>
+                <div class="uk-navbar-left">
+                    <img src="/images/aoibanner.png" height="20%" width="20%" style="background-color:#000000;border-radius: 5px;margin: -24px;padding: 10px;" ></img><a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home" style="color:#FFFFFF;"></a><br><br>
+                </div>
+                
+
+            </div>
+        </div>
+    </nav>
+    <br>
+    <div align="center" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>
+        <h1 style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>Aoi.Panel Error</h1>
+        <h3 style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;' id="desc"></h3>
+        <img src="/images/aoi-bird.png" height="10%" width="10%" class="center" alt=""/>
+           
+    </div>
+  <style>
+    *{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			background: #1e1e1e;
+			min-height: 100vh;
+		}
+</style>
+<script>
+    function a(){
+        const params = new URLSearchParams(document.location.search);
+        const s = params.get("error");
+        if(!s) return document.getElementById("desc").innerHTML="No error?? Why are you here then?!";
+        document.getElementById("desc").innerHTML=s.replace(/\+/g," ");
+    }
+    a();
+</script>
+</body>
+</html>
