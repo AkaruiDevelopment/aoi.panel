@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>@akarui/aoi.panel for v7</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+  <style>
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+    </style>
+    
+
+
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.13/dist/css/uikit.min.css" />
+
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.13/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.13/dist/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+  <nav class="uk-navbar-container" style="background-color:#000000;border-radius: 30px;margin: 20px;padding: 10px;">
+    <div class="uk-container">
+      <div uk-navbar>
+
+        <div class="uk-navbar-left">
+
+          <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home"
+            style="color:#FFFFFF;">AkaruiDevelopment</a>
+          
+        </div>
+        <div class="uk-navbar-right" >
+          
+          LOGIN
+
+        </div>
+
+      </div>
+    </div>
+  </nav>
+  <br>
+  <div id="container">
+    <table class="uk-table uk-table-small uk-table-divider " style="color:white;" style="border-radius: 30px;margin: 30px;padding: 30px;">
+    <thead>
+        <tr>
+            <th>File / Directory Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody id="body">
+        
+    </tbody>
+</table>
+
+  </div>
+  <div id="diff" style="display:none;"></div>
+
+</body>
+<script>
+  function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+  var file;
+  if(!getParameterByName("dir")){
+      file = "https://editor.bumblebeerox1.repl.co/dirs"
+  }
+  else{
+    file="https://editor.bumblebeerox1.repl.co/dirs?dir="+getParameterByName("dir")
+  }
+
+fetch (file)
+.then(x => x.json())
+.then(y => {
+  let a="";
+  console.log(y)
+  for(let i=0;i<y.length;i++){
+    if(y[i].type=="dir"){
+      a+=`<tr>
+            <th>Dir: ${y[i].path}</th>
+            <th><a href="/?dir=${y[i].path}"><button class="uk-button uk-button-default uk-button-small" style="color:white;">Open</button></a></th>
+            <th><button class="uk-button uk-button-default uk-button-small" style="color:white;">Delete</button></th>
+        </tr>`
+    }
+    else {
+      a+=`<tr>
+            <th>File: ${y[i].path}</th>
+            <th><a href="/index.html?file=${y[i].path}"><button class="uk-button uk-button-default uk-button-small" style="color:white;">Edit</button></a></th>
+            <th><button class="uk-button uk-button-default uk-button-small" style="color:white;">Delete</button></th>
+        </tr>`
+    
+    }
+    
+  }
+  document.getElementById("body").innerHTML=a;
+});
+
+</script>
+</html>
