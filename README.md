@@ -17,27 +17,32 @@ npm i @akarui/aoi.panel
 ## Basic Usage:
 ```javascript
 const {Panel} = require("@akarui/aoi.panel")
-const {AoiClient} = require("aoi.js")
+const { AoiClient, LoadCommands } = require("aoi.js");
+
 const bot = new AoiClient({
-  token: "Discord Bot Token",
-  prefix: "Discord Bot Prefix",
-  intents: ["MessageContent", "Guilds", "GuildMessages"],
-  events: ["onMessage"]
+    token: "Bot token",
+    prefix: "p!",
+    intents: ["Guilds", "GuildMessages", "MessageContent"],
+    events: ["onMessage", "onInteractionCreate"]
 });
+
+const loader = new LoadCommands(bot);
+loader.load(bot.cmd, "./commands/");
+
 const panel = new Panel({
-    username: "your-username",//username for logging in
-    password: "password-here",//password for logging in
-    secret: require('crypto').randomBytes(16).toString("hex"),//session secret
-    port: 3000,//port on which website is hosted, Not required! Default 3000
-    bot: bot,//your aoi.js client
-    mainFile: "index.js",//Main file where code is running.Not required, default taken from package.json
-    commands: "./commands",// folder name in which all the edit needing files are there.
-    interaction:"./interactions"//interactions folder
+  port:3000,
+  client:bot
 })
-panel.loadPanel()//Load The Panel
-panel.onError()//Will detect errors, and send it to aoi.panel's error page.
+
+panel.loadAPI({
+  auth:" Authentication key here (random string), keep it safe, and no special charecters"
+})
+
+panel.loadGUI({
+  username:["username 1","username 2"],
+  password:["Password 1","Password 2"],
+})
 ```
-## We also support aoi.js v6 and discord.js v13.
 
 ## View the full documentation [here](https://github.com/AkaruiDevelopment/panel/tree/aoiv6/documentation/README.md)
 
