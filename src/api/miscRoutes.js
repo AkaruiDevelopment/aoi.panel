@@ -9,6 +9,11 @@ function miscRoutes(data,checkAuth){
       "id":bot.user.id
     });
   })
+  data.app.get("/api/:auth/baseRoute",checkAuth,function(req,res){
+    res.status(200).json({
+      "data":process.cwd()
+    })
+  })
   data.app.get('/api/:auth/reboot', checkAuth, function(req, res) {
     res.json({"msg":"rebooting system"})
     function a(){
