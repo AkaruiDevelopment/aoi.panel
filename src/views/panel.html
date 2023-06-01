@@ -9,11 +9,12 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.13/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.13/dist/js/uikit-icons.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 
     <style>
         /* width */
-        img { 
-}
+        img {}
         @keyframes iconAni {
             from {
                 -webkit-transform: rotate(0deg) ;
@@ -75,7 +76,7 @@
 			padding: 0;
 			box-sizing: border-box;
 		}
-        #content{
+        .content{
             position:absolute;
             top:40%;
             left:30%;
@@ -164,7 +165,8 @@
         <div class="uk-container">
             <div uk-navbar>
                 <div class="uk-navbar-left">
-                    <img src="/images/aoibanner.png" height="20%" width="20%" style="background-color:#000000;border-radius: 5px;margin: -24px;padding: 10px;" ></img><a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home" style="color:#FFFFFF;"></a><br><br>
+                    <img src="/images/aoibanner.png" height="20%" width="20%" style="background-color:#000000;border-radius: 5px;margin: -24px;padding: 10px;" class="w3-hide-small w3-hide-medium"></img><a class="uk-navbar-item uk-logo w3-hide-small w3-hide-medium" href="#" aria-label="Back to Home" style="color:#FFFFFF;"></a><br><br>
+                    <img src="/images/aoibanner.png" height="20%" width="80%" style="background-color:#000000;border-radius: 5px;margin: -24px;padding: 10px;" class="w3-hide-large"></img><a class="uk-navbar-item uk-logo w3-hide-large" href="#" aria-label="Back to Home" style="color:#FFFFFF;"></a><br><br>
                 </div>
                 
 
@@ -175,7 +177,7 @@
     <br>
 
     <div id="modal-close-default" uk-modal style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>
-        <div class="uk-modal-dialog uk-modal-body" style="background-color: #1e1e1e;">
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="background-color: #1e1e1e;">
             <button class="uk-modal-close-default" type="button" uk-close></button>
             <h2 class="uk-modal-title" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>Execute!</h2>
             <form id="myForm" action="/api/!auth/shellexec" method='post' autocomplete='off'>
@@ -193,12 +195,12 @@
         </div>
     </div>
 
-    <div id="modal-close-select" uk-modal style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;width: auto;'>
-        <div class="uk-modal-dialog uk-modal-body" style="background-color: #1e1e1e;width: auto;">
+    <div id="modal-close-select" uk-modal style='font-family: "Dosis",sans-serif;color: #FFFFFF;width: auto;'>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="background-color: #1e1e1e;width: auto;">
             <button class="uk-modal-close-default" type="button" uk-close></button>
             <button type="button" class="uk-button uk-button-default" style="border-radius: 100%;" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;' onclick="javascript:back()">< Back </button>
-            <h2 class="uk-modal-title" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>Editor</h2>
-            <table class="uk-table uk-table-small uk-table-divider " style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;' style="border-radius: 30px;margin: 30px;padding: 30px;">
+            <h2 class="uk-modal-title" style='font-family: "Dosis",sans-serif;color: #FFFFFF;'>Editor</h2>
+            <table class="uk-table uk-table-small uk-table-divider " style='font-family: "Dosis",sans-serif;color: #FFFFFF;' style="border-radius: 30px;margin: 30px;padding: 30px;max-width: 100%;">
                 <thead>
                     <tr>
                         <th>File / Directory Name</th>
@@ -216,7 +218,7 @@
     
 
 <div id="modal-close-aoiEval" uk-modal style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>
-    <div class="uk-modal-dialog uk-modal-body" style="background-color: #1e1e1e;">
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="background-color: #1e1e1e;">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <h2 class="uk-modal-title" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>Aoi.js Eval</h2>
         <form id="myAoiForm" action="/api/!auth/aoieval" method='post' autocomplete='off'>
@@ -235,7 +237,7 @@
 </div>
 
 <div id="modal-close-djsEval" uk-modal style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>
-    <div class="uk-modal-dialog uk-modal-body" style="background-color: #1e1e1e;">
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="background-color: #1e1e1e;">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <h2 class="uk-modal-title" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>D.js/Javascript Eval</h2>
         <form id="myDjsForm" action="/api/!auth/djseval" method='post' autocomplete='off'>
@@ -255,7 +257,7 @@
 
 
 <div id="modal-close-stats" uk-modal style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>
-    <div class="uk-modal-dialog uk-modal-body" style="background-color: #1e1e1e;">
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="background-color: #1e1e1e;">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <h2 class="uk-modal-title" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>Statistics</h2>
         <h3 class="uk-modal-title" style='font-family: "Dosis",sans-serif;font-weight: 800;color: #FFFFFF;'>RAM: <span id="ram"></span></h3>
@@ -265,10 +267,12 @@
 </div>
 
 <div id="modal-close-guild" uk-modal style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>
-    <div class="uk-modal-dialog uk-modal-body" style="background-color: #1e1e1e;" align="center">
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="background-color: #1e1e1e;" align="center">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <h2 class="uk-modal-title" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>Guilds</h2>
-        <div id="guildList" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;display: inline-block;display: flex;justify-content: space-between;' align="center">
+        <div id="guildList" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;display: inline-block;display: flex;justify-content: space-between;' align="center" class="w3-hide-medium w3-hide-small">
+        </div>
+        <div id="guildList2" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;justify-content: space-between; ' align="center" class="w3-hide-large">
         </div>
     </div>
 </div>
@@ -311,6 +315,15 @@
   function back(){
     window.location.href="/panel?dir="+link
   }
+  var baseLk="";
+  async function getBL(){ 
+    let baseLink = await fetch ("/api/!auth/baseRoute")
+.then(x => x.json())
+.then(y => {return y})
+    console.log(baseLink.data)
+    baseLk=baseLink.data
+  }
+  getBL()
 
 fetch (file)
 .then(x => x.json())
@@ -320,16 +333,16 @@ fetch (file)
   for(let i=0;i<y.length;i++){
     if(y[i].type=="dir"){
       a+=`<tr>
-            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>Dir: ${y[i].path}</th>
-            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'><a href="/panel/?dir=${y[i].path}"><button class="uk-button uk-button-default uk-button-small" style="color:white;" style="background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;">Open</button></a></th>
-            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'><button class="uk-button uk-button-default uk-button-small" style="color:white;" style="background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;">Delete</button></th>
+            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size:4vw;'>Dir: ${y[i].path.replace(baseLk,"")}</th>
+            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size:4vw;'><a href="/panel/?dir=${y[i].path}"><button class="uk-button uk-button-default uk-button-small" style="color:white;" style="background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;">Open</button></a></th>
+            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size:4vw;'><button class="uk-button uk-button-default uk-button-small" style="color:white;" style="background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;">Delete</button></th>
         </tr>`
     }
     else {
       a+=`<tr>
-            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'>File: ${y[i].path}</th>
-            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'><a href="/index.html?file=${y[i].path}"><button class="uk-button uk-button-default uk-button-small" style="color:white;" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;' style="background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;">Edit</button></a></th>
-            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;'><button class="uk-button uk-button-default uk-button-small" style="color:white;" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;' style="background: linear-gradient(120deg, RED, BLACK);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;">Delete</button></th>
+            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size:4vw;'>File: ${y[i].path.replace(baseLk,"")}</th>
+            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size:4vw;'><a href="/index.html?file=${y[i].path}"><button class="uk-button uk-button-default uk-button-small" style="color:white;" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;' style="background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;">Edit</button></a></th>
+            <th style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size:4vw;'><button class="uk-button uk-button-default uk-button-small" style="color:white;" style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;' style="background: linear-gradient(120deg, RED, BLACK);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;">Delete</button></th>
         </tr>`
     
     }
@@ -346,7 +359,7 @@ fetch (file)
 
 
 
-    <div id="content" align="center" style="line-height: 0.8;">
+    <div id="content" align="center" style="line-height: 0.8;" class="w3-center w3-hide-small w3-hide-medium content">
         <span style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size: 5vw;'>@akarui/aoi.panel<span>
         <br>
         <span style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size: 2vw;'>Panel synced with !bot</span>
@@ -359,6 +372,24 @@ fetch (file)
         <a ><button class="uk-button " uk-toggle="target: #modal-close-default" style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >Shell</button></a>
         <br>
         <a ><button class="uk-button " uk-toggle="target: #modal-close-guild" style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >Guilds</button></a>
+        <a ><button class="uk-button " uk-toggle="target: #modal-close-select" style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >Editor</button></a>
+        <a href="/logout"><button class="uk-button "  style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >LOGOUT</button></a>
+
+
+    </div>
+    
+    <div id="content"  style="line-height: 0.8;" class="w3-hide-large w3-center"><br><br><br><br>
+        <span style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size: 10vw;'>@akarui/aoi.panel<span>
+        <br>
+        <span style='font-family: "Dosis",sans-serif;font-weight: 1000;color: #FFFFFF;font-size: 5vw;'>Panel synced with !bot</span>
+        <br><br><br><br>
+        
+        <button class="uk-button " style="background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" onclick="reboot()">Reboot</button>
+        <a ><button uk-toggle="target: #modal-close-stats" class="uk-button " style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >Stats</button></a><br>
+        <a ><button class="uk-button " uk-toggle="target: #modal-close-djsEval" style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >D.js Eval</button></a>
+        <a ><button class="uk-button " uk-toggle="target: #modal-close-aoiEval" style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >Aoi.js Eval</button></a><br>
+        <a ><button class="uk-button " uk-toggle="target: #modal-close-default" style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >Shell</button></a>
+        <a ><button class="uk-button " uk-toggle="target: #modal-close-guild" style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >Guilds</button></a><br>
         <a ><button class="uk-button " uk-toggle="target: #modal-close-select" style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >Editor</button></a>
         <a href="/logout"><button class="uk-button "  style="color:#FFFFFF;background: linear-gradient(120deg, #ea00ff, #0509e6);border-radius: 30px;animation: gradient-animation 4s ease-in-out infinite;" >LOGOUT</button></a>
 
@@ -388,9 +419,10 @@ fetch (file)
             const json = await res.json();
             for(let i=0;i<json.length;i++){
                 document.getElementById("guildList").innerHTML+=`<a ><img src="${json[i].iconURL.replace(".webp",".png")}" id="icons" onerror="this.src='https://www.freepnglogos.com/uploads/discord-logo-png/concours-discord-cartes-voeux-fortnite-france-6.png'" style="border-radius: 50%; width: 150px;background: linear-gradient(120deg, #ea00ff, #0509e6) border-box;color: #313149;padding: 5px;border: 1px solid transparent;display: inline-block;margin: 15px 0;"></img><br>${json[i].name}</a><br><br>`
+                document.getElementById("guildList2").innerHTML+=`<a ><img src="${json[i].iconURL.replace(".webp",".png")}" id="icons" onerror="this.src='https://www.freepnglogos.com/uploads/discord-logo-png/concours-discord-cartes-voeux-fortnite-france-6.png'" style="border-radius: 50%; width: 150px;background: linear-gradient(120deg, #ea00ff, #0509e6) border-box;color: #313149;padding: 5px;border: 1px solid transparent;display: inline-block;margin: 15px 0;"></img><br>${json[i].name}</a><br><br>`
                 guildHTML+=`<a ><img src="${json[i].iconURL.replace(".webp",".png")}"  onerror="this.src='https://www.freepnglogos.com/uploads/discord-logo-png/concours-discord-cartes-voeux-fortnite-france-6.png'" style="border-radius: 50%; width: 150px;background: linear-gradient(120deg, #ea00ff, #0509e6) border-box;color: #313149;padding: 5px;border: 1px solid transparent;display: inline-block;margin: 15px 0;"></img><br>${json[i].name}</a><br><br>`
             }
-            if(json.length==0){document.getElementById("guildList").innerHTML="No guilds found."}
+            if(json.length==0){document.getElementById("guildList").innerHTML="No guilds found.";document.getElementById("guildList2").innerHTML="No guilds found."}
         }
         guildData()
         setInterval(stats,1000)
