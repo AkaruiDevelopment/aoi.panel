@@ -1,4 +1,4 @@
-
+const fs = require("fs")
 
 function miscRoutes(data,checkAuth){
   data.app.get('/api/:auth', checkAuth ,async function(req,res){
@@ -141,6 +141,40 @@ function miscRoutes(data,checkAuth){
       res.status(400).json({"data":"An error occurred. Check your editor's console!"});
       console.log("Error occurred while leaving guild with ID: "+req.query.id+"\n\n");
       return console.log(e.stack);
+    }
+  })
+
+  data.app.get("/api/:auth/createFile" ,checkAuth, function(req,res){
+    try{
+      fs.writeFileSync(req.query.filepath.replace("\\\\","\\"), "")
+      res.status(200).json({"data":"Success!"})
+    }
+    catch(e){
+      res.status(400).json({"data":"Error Occurred while creating file: "+req.query.filepath.replace("\\\\","\\")})
+      console.log(e)
+      console.log(e.stack)
+    }
+  })
+  data.app.get("/api/:auth/deleteFile" ,checkAuth, function(req,res){
+    try{
+      fs.unlinkSync(req.query.filepath.replace("\\\\","\\"), "")
+      res.status(200).json({"data":"Success!"})
+    }
+    catch(e){
+      res.status(400).json({"data":"Error Occurred while deleting file: "+req.query.filepath.replace("\\\\","\\")})
+      console.log(e)
+      console.log(e.stack)
+    }
+  })
+  data.app.get("/api/:auth/deleteDir" ,checkAuth, function(req,res){
+    try{
+      fs.rmSync(req.query.filepath.replace("\\\\","\\"), { recursive: true, force: true });
+      res.status(200).json({"data":"Success!"})
+    }
+    catch(e){
+      res.status(400).json({"data":"Error Occurred while deleting directory: "+req.query.filepath.replace("\\\\","\\")})
+      console.log(e)
+      console.log(e.stack)
     }
   })
 
