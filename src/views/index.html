@@ -214,25 +214,6 @@ button:focus {
 		}
 
     </style>
-	<script>
-		async function validate(){
-			let password = document.getElementById("password").value;
-			let username = document.getElementById("username").value;
-			const response = await fetch("/pass/validate/?username="+username+"&password="+password);
-  			const json = await response.json();
-			if(json.data==true){
-				window.location.href="/login?username="+username+"&password="+password;
-			}
-			else{
-				UIkit.notification({
-					message: 'Invalid Username / Password!',
-					status: 'danger',
-					pos: 'bottom-left',
-					timeout: 5000
-				});
-			}
-		}	
-	</script>
 	
 </head>
 <body>
@@ -289,12 +270,14 @@ button:focus {
 				<span class="line-1 anim-typewriter" id="test" style="animation: animate 4s linear infinite;word-wrap: break-word;overflow:hidden;font-size: 20px;"></span>
 
 			</div>
-			<button type="button" class="button btn-primary flexbox hide-mediumsc hide-smallsc" style="width: 10%;" type="button" uk-toggle="target: #offcanvas-reveal">
-				<ion-icon name="folder-open-outline"></ion-icon> Login <div class="btn-secondary" ></div>
-			</button>
-			<button type="button" class="button btn-primary flexbox hide-largesc" style="width: 40%;" type="button" uk-toggle="target: #offcanvas-reveal">
-				<ion-icon name="folder-open-outline"></ion-icon> Login <div class="btn-secondary" ></div>
-			</button>
+			<div id="loginbutton">
+				<button type="button" class="button btn-primary flexbox hide-mediumsc hide-smallsc" style="width: 10%;" type="button" uk-toggle="target: #offcanvas-reveal">
+					<ion-icon name="folder-open-outline"></ion-icon> Login <div class="btn-secondary" ></div>
+				</button>
+				<button type="button" class="button btn-primary flexbox hide-largesc" style="width: 40%;" type="button" uk-toggle="target: #offcanvas-reveal">
+					<ion-icon name="folder-open-outline"></ion-icon> Login <div class="btn-secondary" ></div>
+				</button>
+			</div>
         </div>
           <script>
             function on() {
@@ -600,5 +583,46 @@ button:focus {
 		}
 </style>
 </body>
+<script>
+	function getParameterByName(name, url = window.location.href) {
+name = name.replace(/[\[\]]/g, '\\$&');
+var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+results = regex.exec(url);
+if (!results) return null;
+if (!results[2]) return '';
+return decodeURIComponent(results[2].replace(/\+/g, ' '));
+
+}
+
+if(getParameterByName("loggedout")=="true"){localStorage.setItem("login","false")}
+if(localStorage.getItem("login")=="true"){
+  document.getElementById("loginbutton").innerHTML=`<button type="button" class="button btn-primary flexbox hide-mediumsc hide-smallsc" style="width: 10%;" type="button"  onclick="javascript:window.location.href='/panel'">
+		  <ion-icon name="folder-open-outline"></ion-icon> Open <div class="btn-secondary" ></div>
+	  </button>
+	  <button type="button" class="button btn-primary flexbox hide-largesc" style="width: 40%;" type="button" onclick="javascript:window.location.href='/panel'">
+		  <ion-icon name="folder-open-outline"></ion-icon> Open <div class="btn-secondary" ></div>
+	  </button>`
+}
+
+
+async function validate(){
+  let password = document.getElementById("password").value;
+  let username = document.getElementById("username").value;
+  const response = await fetch("/pass/validate/?username="+username+"&password="+password);
+	const json = await response.json();
+  if(json.data==true){
+	  localStorage.setItem("login", "true");
+	  window.location.href="/login?username="+username+"&password="+password;
+  }
+  else{
+	  UIkit.notification({
+		  message: 'Invalid Username / Password!',
+		  status: 'danger',
+		  pos: 'bottom-left',
+		  timeout: 5000
+	  });
+  }
+}	
+</script>
 
 </html>
