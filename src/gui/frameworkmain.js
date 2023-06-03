@@ -17,7 +17,7 @@ function loadFramework(data,params,app,thisD){
       return res.redirect("/")
     }
   }
-    app.get("/pass/validate/",async function(req,res){
+    app.get("/pass/validate/",async (req,res)=>{
         let uname= req.query.username;
         let pass = req.query.password;
         if(Array.isArray(data.username)){
@@ -43,7 +43,7 @@ function loadFramework(data,params,app,thisD){
     app.get('/logout', async (req, res) => {
       req.session.username = "";
       req.session.password = "";
-      res.redirect("/")
+      res.redirect("/?loggedout=true")
     })
     app.get('/panel',isLoggedIn, async (req, res) => {
         const bot = params.client;
