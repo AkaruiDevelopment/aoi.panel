@@ -2,7 +2,7 @@ const fs = require("fs")
 const path = require("path")
 
 function fileRoutes(data, checkAuth) {
-  data.app.get("/api/:auth/file",checkAuth, async function(req, res) {
+  data.app.get("/api/:auth/file",checkAuth, async (req,res)=> {
     let f = req.query.file;
     if (!f) return res.status(404).json({ "err": "file not provided" });
     console.log(f)
@@ -41,7 +41,7 @@ function fileRoutes(data, checkAuth) {
     }
     return res.status(404).json({ "err": "file not found" })
   })
-  data.app.get("/api/:auth/dirs",checkAuth, async function(req, res) {
+  data.app.get("/api/:auth/dirs",checkAuth, async (req,res)=> {
   var dirR = req.query.dir;
   if (!dirR) {
     dirR = process.cwd()

@@ -1,7 +1,7 @@
 const fs = require("fs")
 
 function miscRoutes(data,checkAuth){
-  data.app.get('/api/:auth', checkAuth ,async function(req,res){
+  data.app.get('/api/:auth', checkAuth ,async (req,res)=>{
     const bot = data.params.client;
     res.status(200).json({
       "usertag":bot.user.tag,
@@ -9,12 +9,12 @@ function miscRoutes(data,checkAuth){
       "id":bot.user.id
     });
   })
-  data.app.get("/api/:auth/baseRoute",checkAuth,function(req,res){
+  data.app.get("/api/:auth/baseRoute",checkAuth,(req,res)=>{
     res.status(200).json({
       "data":process.cwd()
     })
   })
-  data.app.get('/api/:auth/reboot', checkAuth, function(req, res) {
+  data.app.get('/api/:auth/reboot', checkAuth, (req, res)=> {
     res.json({"msg":"rebooting system"})
     function a(){
       process.on("exit", () => {
@@ -66,7 +66,7 @@ function miscRoutes(data,checkAuth){
       "cpu": cpu
     })
   })
-  data.app.get("/api/:auth/aoieval", checkAuth,async function(req,res){
+  data.app.get("/api/:auth/aoieval", checkAuth,async (req,res)=>{
     var result;
     try {
       const client = data.params.client;
@@ -94,7 +94,7 @@ function miscRoutes(data,checkAuth){
     res.json({"data":nd.replace(/'/g, "")});
   })
 
-  data.app.get("/api/:auth/djseval",checkAuth, async function(req,res){
+  data.app.get("/api/:auth/djseval",checkAuth, async (req,res)=>{
     var result;
     try {
       const bot = data.params.client;
@@ -109,11 +109,11 @@ function miscRoutes(data,checkAuth){
     const nd = require('util').inspect(result, { depth: 0 }).replace(/\n/g, '<br>')
     res.json({"data":nd.replace(/'/g, "")});
   })
-  data.app.get("/api/:auth/guilds",checkAuth,async function(req,res){
+  data.app.get("/api/:auth/guilds",checkAuth,async (req,res)=>{
     let server = await data.params.client.guilds.cache.map(z => z)
     res.json(server);
   })
-  data.app.get("/api/:auth/guild/:id",checkAuth,async function(req,res){
+  data.app.get("/api/:auth/guild/:id",checkAuth,async (req,res)=>{
     let guild = await data.params.client.guilds.cache.get(req.params.id);
     if(!guild){return res.status(404).json({"data":"Guild not found!"})}
     var owner;
@@ -144,7 +144,7 @@ function miscRoutes(data,checkAuth){
     }
   })
 
-  data.app.get("/api/:auth/createFile" ,checkAuth, function(req,res){
+  data.app.get("/api/:auth/createFile" ,checkAuth, (req,res)=>{
     try{
       fs.writeFileSync(req.query.filepath.replace("\\\\","\\"), "")
       res.status(200).json({"data":"Success!"})
@@ -155,7 +155,7 @@ function miscRoutes(data,checkAuth){
       console.log(e.stack)
     }
   })
-  data.app.get("/api/:auth/deleteFile" ,checkAuth, function(req,res){
+  data.app.get("/api/:auth/deleteFile" ,checkAuth, (req,res)=>{
     try{
       fs.unlinkSync(req.query.filepath.replace("\\\\","\\"), "")
       res.status(200).json({"data":"Success!"})
@@ -166,7 +166,7 @@ function miscRoutes(data,checkAuth){
       console.log(e.stack)
     }
   })
-  data.app.get("/api/:auth/deleteDir" ,checkAuth, function(req,res){
+  data.app.get("/api/:auth/deleteDir" ,checkAuth, (req,res)=>{
     try{
       fs.rmSync(req.query.filepath.replace("\\\\","\\"), { recursive: true, force: true });
       res.status(200).json({"data":"Success!"})
