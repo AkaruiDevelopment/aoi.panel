@@ -1,16 +1,13 @@
-import { Router } from "express";
-import {
-    createFolder,
-    deleteFolder,
-} from "../controllers/files.js";
+import { Router, RequestHandler } from "express";
+import { createFolder, deleteFolder } from "../controllers/files.js";
 import { AoiPanelRequest } from "../typings/interface";
 
 const router = Router();
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
-router.get("/", (req: AoiPanelRequest, res) => {
+import checkAuth from "../middleware/checkAuth.js";
+router.use(checkAuth as RequestHandler);
+router.get("/", (req, res) => {
     res.json({
-        data: req.panel.sourceTree,
+        data: (req as AoiPanelRequest).panel.sourceTree,
     });
 });
 

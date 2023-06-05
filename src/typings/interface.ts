@@ -7,7 +7,7 @@ export interface PanelParams {
     client: AoiClient;
     adminKey: string;
     refreshOptions: RefreshOptions;
-    userData: UserData;
+    adminData: Omit<UserData,"perms">;
 }
 
 export interface RefreshOptions {

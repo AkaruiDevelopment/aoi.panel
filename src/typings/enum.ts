@@ -35,8 +35,19 @@ export enum Perms {
     DeleteFile = 1 << 5,
     AccessLogs = 1 << 6,
     AccessSettings = 1 << 7,
-    CreateFile=1<<8,
-    Admin = ReadFile | WriteFile | AccessShell | AccessEval | AccessEditor | DeleteFile | AccessLogs | AccessSettings | CreateFile,
+    CreateFile = 1 << 8,
+    AccessFiles = ReadFile | WriteFile | DeleteFile | CreateFile,
+    Reboot = 1 << 9,
+    Admin = ReadFile |
+        WriteFile |
+        AccessShell |
+        AccessEval |
+        AccessEditor |
+        DeleteFile |
+        AccessLogs |
+        AccessSettings |
+        CreateFile |
+        Reboot,
 }
 
 export enum PathType {

@@ -3,7 +3,11 @@ import Hexagons from "../../components/hexagons";
 import Login from "../../components/login";
 import TypeWriter from "../../components/typeWriter";
 
-export default function Home(props: { open: boolean; updateOpen: (open: boolean) => void }) {
+export default function Home(props: {
+    open: boolean;
+    updateOpen: (open: boolean) => void;
+    updateIsLogged: (logged: boolean) => void;
+}) {
     return (
         <>
             <Hexagons>
@@ -14,7 +18,11 @@ export default function Home(props: { open: boolean; updateOpen: (open: boolean)
                         zIndex: 1,
                     }}
                 />
-                <Login open={props.open} updateOpen={props.updateOpen} />
+                <Login
+                    open={props.open}
+                    updateOpen={props.updateOpen}
+                    updateIsLogged={props.updateIsLogged}
+                />
             </Hexagons>
         </>
     );

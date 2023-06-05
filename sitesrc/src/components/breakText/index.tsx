@@ -14,7 +14,7 @@ export default function BreakText(props: { text: string }) {
                 } as React.CSSProperties;
                 return (
                     <span className="letter" key={i} style={style}>
-                        {letter}
+                        {letter === " " ? "\u00A0" : letter}
                     </span>
                 );
             })}

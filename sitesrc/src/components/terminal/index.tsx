@@ -1,6 +1,8 @@
 import { useState, useRef ,useEffect, SetStateAction} from "react";
 import "./index.scss";
-export default function Terminal() {
+export default function Terminal(props:{
+    username:string,
+}) {
     const [entries, setEntries] = useState<
         { inputValue: string; output: string }[]
     >([]);
@@ -48,20 +50,22 @@ export default function Terminal() {
 
     };
 
-    const processCommand = () => {
+    const processCommand = async () => {
         // Process the command and generate the output
         const command = inputValue.trim();
         let output = "";
 
-        if (command === "help") {
-            output = "Available commands: help, about, contact";
-        } else if (command === "about") {
-            output = "This is a custom web terminal component.";
-        } else if (command === "contact") {
-            output = "Email: example@example.com";
-        } else {
-            output = `Command not found: ${command}`;
-        }
+        const res = await fetch("/api/misc/exec", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({ cmd:command }),
+        });
+        const data = await res.json();
+        output = data.stderr !== "" ? data.stderr : data.stdout;
+
 
         setEntries((oldEntries) => {
            const newentries = [...oldEntries, { inputValue, output }]
@@ -86,7 +90,7 @@ export default function Terminal() {
                             fontSize: '16px',
                         }}>
                             <span className="prompt">
-                                bot@<span className="pkg">aoi.js</span> {">"}
+                                {props.username}@<span className="pkg">aoi.js</span> {">"}
                             </span>
                             <span className="input">{entry.inputValue}</span>
                             <br />
@@ -98,7 +102,7 @@ export default function Terminal() {
             <div className="inputside">
                 <span className="prompt">
                     {" "}
-                    bot@<span className="pkg">aoi.js</span> {">"}{" "}
+                    {props.username}@<span className="pkg">aoi.js</span> {">"}{" "}
                 </span>
                 <input
                     type="text"

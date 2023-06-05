@@ -2,15 +2,21 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import aoijsBanner from "../../assets/aoibanner.png";
 import "./index.scss";
-export default function Navbar(props: { open: boolean; updateOpen: Function }) {
+export default function Navbar(props: { open: boolean; updateOpen: Function,isLogged:boolean }) {
     const [isLogged, setIsLogged] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
             setIsLogged(true);
+        } else {
+            setIsLogged(false);
         }
-    }, []);
+
+        if(props.isLogged) {
+            setIsLogged(true);
+        }
+    });
 
     return (
         <header className="navcon">

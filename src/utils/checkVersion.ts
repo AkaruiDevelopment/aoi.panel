@@ -16,7 +16,7 @@ export default async function checkVersion() {
     const { default: packageJson } =
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        await import("../../package.json", {
+        await import("../../../package.json", {
             assert: {
                 type: "json",
             },

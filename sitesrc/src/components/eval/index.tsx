@@ -30,8 +30,9 @@ export default function Eval(
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "authorization": `Bearer ${localStorage.getItem("token")}`,
             },
-            body: JSON.stringify({ input }),
+            body: JSON.stringify({ code: input }),
         });
 
         if (res.ok) {
@@ -106,30 +107,9 @@ export default function Eval(
                     type="text"
                     fullWidth
                     multiline={true}
-                    variant="standard"
+                    variant="filled"
                     value={output !== undefined ? output : undefined}
                     disabled={true}
-                    sx={{
-                        "& .MuiInputBase-input": {
-                            color: "white",
-                        },
-                        backgroundColor: "rgba(40,40,40,1)",
-                        color: "white",
-
-                        caretColor: "white",
-                        "& .MuiInput-underline:before": {
-                            borderBottomColor: "white",
-                        },
-
-                        "& .MuiInput-underline:after": {
-                            borderBottomColor: "white",
-                        },
-
-                        "& .MuiInput-underline:hover:not(.Mui-disabled):before":
-                            {
-                                borderBottomColor: "white",
-                            },
-                    }}
                 />
             </DialogContent>
             <DialogActions
@@ -147,6 +127,8 @@ export default function Eval(
                 <Button
                     onClick={(e) => {
                         e.preventDefault();
+                        setOutput("");
+                        setInput("");
                         props.updateOpen(false);
                     }}
                 >

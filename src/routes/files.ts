@@ -1,11 +1,12 @@
-import { Router } from "express";
+import { Router,RequestHandler } from "express";
 import {
     createFile,
     deleteFile,
     getFileContent,
 } from "../controllers/files.js";
 const router = Router();
-
+import checkAuth from "../middleware/checkAuth.js";
+router.use(checkAuth as RequestHandler);
 router.post("/", async (req, res) => {
     const { dir, file, data } = req.body;
 

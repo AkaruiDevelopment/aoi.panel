@@ -13,6 +13,7 @@ export default function Login(
     props: {
         open: boolean;
         updateOpen: (open: boolean) => void;
+        updateIsLogged: (logged: boolean) => void;
     } & React.HTMLAttributes<HTMLFormElement>,
 ) {
     const [username, setUsername] = useState("");
@@ -28,12 +29,10 @@ export default function Login(
 
     const navigate = useNavigate();
 
-  
-
     const login = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        fetch("/api/login", {
+        fetch("/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -44,6 +43,8 @@ export default function Login(
             .then((data) => {
                 if (data.token) {
                     localStorage.setItem("token", data.token);
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                    props.updateIsLogged(true);
                     navigate("/panel");
                 }
             });

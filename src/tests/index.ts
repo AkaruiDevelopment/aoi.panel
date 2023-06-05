@@ -6,6 +6,7 @@ import FolderRouter from "../routes/folders.js";
 import path from "path";
 const app = express();
 import { createSourceTree } from "../controllers/files.js";
+import AuthRouter from "../routes/auth.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
 app.use((req, res, next) => {
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.json());
 app.use(cors());
+app.use("/api/auth", AuthRouter);
 app.use("/api/files", FileRouter);
 app.use("/api/folders", FolderRouter);
 app.use(express.static(path.join(process.cwd(), "./site")));
