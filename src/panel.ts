@@ -28,7 +28,7 @@ export class Panel {
         this.app.use(this.#addPanelData());
         this.app.use(checkAuth as express.RequestHandler);
 
-        this.app("/api", (req, res) => {
+        this.app.get("/api", (req, res) => {
             res.json({
                 message: "Welcome to Aoi.js Panel API",
             });
