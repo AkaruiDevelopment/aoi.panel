@@ -1,0 +1,72 @@
+.panel {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .btngroup {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        border: 2px solid white;
+        padding: 16px;
+        border-radius: 16px;
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            min-width: 300px;
+            &.btn {
+                width: 80%;
+            }
+
+            .button {
+                flex: 1;
+                width: 100%;
+                // background-image: linear-gradient(120deg, #ea00ff, #0509e6 75%);
+                color: white;
+                &.btn2 {
+                    background-image: none;
+                }
+
+                .link {
+                    text-decoration: none;
+                    color: white;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .shellcon {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .heads {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+.shellclosebtn {
+    padding: 0px;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: 500ms;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.47);
+        transition: 500ms;
+    }
+}

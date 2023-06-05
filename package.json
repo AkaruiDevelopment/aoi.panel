@@ -1,13 +1,20 @@
 {
     "name": "@akarui/aoi.panel",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "The aoi.panel module provides a panel component for the aoi.js library using express.",
-    "main": "src/index.js",
+    "main": "dist/index.js",
+    "exports": {
+        "require": "./dist/common.js",
+        "import": "./dist/index.js"
+    },
     "scripts": {
-        "test": "node index.test.js"
+        "test": "node index.test.js",
+        "build": "npx tsc -p tsconfig.esm.json && npx tsc -p tsconfig.cjs.json && npm run createpack",
+        "createpack": "node pack.js",
+        "lint": "eslint . --ext .ts --fix "
     },
     "engines": {
-        "node": ">=16.9.0"
+        "node": ">=18.x.x"
     },
     "keywords": [
         "aoi.js",
@@ -29,14 +36,26 @@
     "license": "MIT",
     "dependencies": {
         "body-parser": "^1.20.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.1.3",
         "ejs": "^3.1.8",
         "express": "^4.18.1",
         "express-session": "^1.17.3",
-        "node-fetch": "^2.6.1"
+        "jsonwebtoken": "^9.0.0",
+        "undici": "^5.22.1"
     },
     "devDependencies": {
+        "@types/body-parser": "^1.19.2",
+        "@types/cors": "^2.8.13",
+        "@types/express": "^4.17.17",
+        "@types/jsonwebtoken": "^9.0.2",
+        "@types/node": "^20.2.5",
+        "@typescript-eslint/eslint-plugin": "^5.59.8",
+        "@typescript-eslint/parser": "^5.59.8",
         "aoi.js": "^6.2.6",
-        "node": "^17.9.1"
+        "eslint": "^8.41.0",
+        "eslint-config-google": "^0.14.0",
+        "typescript": "^5.0.4"
     },
     "repository": {
         "type": "git",

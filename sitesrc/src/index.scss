@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis:300,400,700,800");
+ @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&display=swap');
+
+:root {
+    --background: #1e1e1e;
+    --text-primary: 0, 0%, 0%;
+    /* Colors */
+    --black: 0, 0%, 0%;
+    --white: 0, 0%, 100%;
+    --red: 347, 84%, 68%;
+    --orange: 23, 84%, 68%;
+    --yellow: 52, 84%, 68%;
+    --green: 114, 84%, 68%;
+    --teal: 163, 84%, 68%;
+    --blue: 219, 84%, 68%;
+    --purple: 279, 84%, 68%;
+    --pink: 312, 84%, 68%;
+    /* Gradients */
+    --gradient: linear-gradient(
+        90deg,
+        hsla(var(--red), 1) 0%,
+        hsla(var(--orange), 1) 12.5%,
+        hsla(var(--yellow), 1) 25%,
+        hsla(var(--green), 1) 37.5%,
+        hsla(var(--teal), 1) 50%,
+        hsla(var(--blue), 1) 62.5%,
+        hsla(var(--blue), 1) 75%,
+        hsla(var(--purple), 1) 87.5%,
+        hsla(var(--pink), 1) 100%
+    );
+    /* Sizes */
+    --paragraph: 1.11rem;
+    /* misc */
+    --transition-main: 0.175, 0.685, 0.32;
+    /* Fonts */
+    --font-main: "Poppins", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+}
+
+html,
+body {
+    background-color: var(--background);
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+

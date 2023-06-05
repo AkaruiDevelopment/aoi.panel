@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "nodenext",
+        "target": "esnext",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "module": "ESNext",
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "sourceMap": true,
+        "declarationMap": true,
+        "resolveJsonModule": true,
+        "rootDir": "./src"
+    },
+    "exclude": ["src/**/*.md", "src/**/templates/**", "dist","sitesrc"]
+}

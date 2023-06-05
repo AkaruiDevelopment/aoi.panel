@@ -1,0 +1,196 @@
+.stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-size: 500%;
+    width: 80%;
+    height: 500px;
+    border-radius: 16px;
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.47);
+        border-radius: 16px;
+        backdrop-filter: blur(100px);
+        border: none;
+        h1 {
+            width: 100%;
+            padding: 32px;
+            border-radius: 0;
+            color: hsla(var(--white), 1);
+            text-align: center;
+            // backdrop-filter: blur(100px);
+        }
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            border: none;
+            background-color: transparent;
+
+            .left {
+                width: 30%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+
+                                    .badges {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        width: 100%;
+                        .chip {
+                            width: auto;
+                            height: 20px;
+                            font-size: 14px;
+                        }
+                    }
+
+                .avatar {
+                    width: 200px;
+                    height: 200px;
+                    font-size: 50px;
+                    filter: drop-shadow(
+                        0px 0px 16px rgba(255, 255, 255, 0.345)
+                    );
+                }
+            }
+
+            .right {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 70%;
+                height: 100%;
+                border-radius: 0;
+                border: none;
+
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    height: 40px;
+
+                    .fields {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0;
+                        border: none;
+
+                        h3 {
+                            color: hsla(var(--white), 1);
+                            font-size: 20px;
+                            font-weight: 700;
+                            margin-bottom: 8px;
+                            text-decoration: underline;
+                        }
+
+                        p {
+                            color: hsla(var(--white), 1);
+                            font-size: 16px;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 889px) {
+    .stats {
+        height: 500px;
+        .overlay {
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+
+            .card {
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+
+                .left {
+                    width: 100%;
+                    height: 30%;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+
+                    .badges {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        width: 50%;
+                        .chip {
+                            width: auto;
+                            height: 20px;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .avatar {
+                        width: 100px;
+                        height: 100px;
+                        font-size: 30px;
+                        border-width: 4px;
+                    }
+
+                    .MuiBadge-badge {
+                        transform: scale(0.7) translate(50%, 20%) !important;
+                    }
+                }
+
+                .right {
+                    width: 100%;
+                    height: 100%;
+
+                    .row {
+                        width: 100%;
+                        height: 100%;
+
+                        .fields {
+                            width: 50%;
+                            height: 100%;
+                            border-radius: 0;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
+                            padding-left: 32px;
+
+                            h3,
+                            p {
+                                text-align: left;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

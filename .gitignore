@@ -12,3 +12,6 @@ index.test.js
 package-lock.json
 .git
 .config
+/oldsrc
+/dist
+/site

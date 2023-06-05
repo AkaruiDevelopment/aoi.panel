@@ -1,0 +1,15 @@
+.typewriter {
+    font-size: 30px;
+    color: #fff;
+    filter: drop-shadow(0px 0px 12px rgba(255, 255, 255, 0.514));
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 400;
+    user-select: none;
+    transition: 500ms;
+}

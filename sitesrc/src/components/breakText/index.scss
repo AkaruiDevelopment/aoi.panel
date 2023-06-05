@@ -1,0 +1,35 @@
+@mixin random-bgr() {
+    color: rgb(random(255), random(255), random(255));
+}
+
+.breakText {
+    display: inline;
+    position: relative;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    z-index: 1;
+    user-select: none;
+
+    &:hover {
+        .letter {
+            transform: rotateZ(calc(var(--i) * 4deg))
+                translateY(calc(var(--i) * 2px));
+            color: rgb(random(255), random(255), random(255));
+        }
+    }
+
+    .letter {
+        display: inline-block;
+        position: relative;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        font-size: 50px;
+        color: white;
+        font-weight: 700;
+        transition: 500ms;
+        cursor: pointer;
+        filter: drop-shadow(0px 0px 12px rgba(255, 255, 255, 0.345));
+    }
+}
