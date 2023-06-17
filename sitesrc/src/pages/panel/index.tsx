@@ -110,13 +110,6 @@ export default function Panel() {
                             </Link>
                         </Button>
                     )}
-                    {hasPerm(user.perms, Perms.AccessFiles) && (
-                        <Button className="button">
-                            <Link to="/files" className="link">
-                                Files
-                            </Link>
-                        </Button>
-                    )}
                     <Button className="button">
                         <Link to="/guilds" className="link">
                             Guilds

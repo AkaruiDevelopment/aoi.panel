@@ -20,6 +20,16 @@ app.use((req, res, next) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     req.panel = {
+        params: {
+            adminData: {
+                username: "admin",
+                password: "admin",
+            },
+            adminKey: "admin",
+            refreshOptions: {
+                enabled: false,
+            },
+        },
         sourceTree: obj,
     };
     next();

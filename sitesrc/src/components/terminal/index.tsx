@@ -1,8 +1,6 @@
-import { useState, useRef ,useEffect, SetStateAction} from "react";
+import { useState, useRef, useEffect, SetStateAction } from "react";
 import "./index.scss";
-export default function Terminal(props:{
-    username:string,
-}) {
+export default function Terminal(props: { username: string }) {
     const [entries, setEntries] = useState<
         { inputValue: string; output: string }[]
     >([]);
@@ -10,11 +8,16 @@ export default function Terminal(props:{
     const [lastIndex, setLastIndex] = useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleInputChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+    const handleInputChange = (event: {
+        target: { value: SetStateAction<string> };
+    }) => {
         setInputValue(event.target.value);
     };
 
-    const handlePress = (event: { key: string; preventDefault: () => void; }) => {
+    const handlePress = (event: {
+        key: string;
+        preventDefault: () => void;
+    }) => {
         if (event.key === "Enter") {
             // Process the command
             processCommand();
@@ -47,7 +50,6 @@ export default function Terminal(props:{
             event.preventDefault();
             setInputValue((inputValue) => inputValue + "    ");
         }
-
     };
 
     const processCommand = async () => {
@@ -55,22 +57,47 @@ export default function Terminal(props:{
         const command = inputValue.trim();
         let output = "";
 
+        if (command === "clear") {
+            return setEntries([]);
+            setInputValue("");
+        }
+        if (command === "aoi help") {
+            output =
+                "custom panel command list:\n\n" +
+                "clear - clear the terminal\n" +
+                "lhelp - show this message\n" +
+                "ping - check the bot's ping\n" +
+                "stats - show the bot's stats\n" +
+                "ram - show the bot's ram usage\n" +
+                "cpu - show the bot's cpu usage\n" +
+                "js - run javascript code\n" +
+                "\n\n note use 'aoi' before the command\n\n";
+
+            setEntries((oldEntries) => {
+                const newentries = [...oldEntries, { inputValue, output }];
+                setLastIndex(newentries.length);
+                return newentries;
+            });
+
+            setInputValue("");
+            return;
+        }
+
         const res = await fetch("/api/misc/exec", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "authorization": `Bearer ${localStorage.getItem("token")}`
+                authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-            body: JSON.stringify({ cmd:command }),
+            body: JSON.stringify({ cmd: command }),
         });
         const data = await res.json();
         output = data.stderr !== "" ? data.stderr : data.stdout;
 
-
         setEntries((oldEntries) => {
-           const newentries = [...oldEntries, { inputValue, output }]
-           setLastIndex(newentries.length);
-              return newentries;
+            const newentries = [...oldEntries, { inputValue, output }];
+            setLastIndex(newentries.length);
+            return newentries;
         });
         // Clear the input value
         setInputValue("");
@@ -83,14 +110,18 @@ export default function Terminal(props:{
     return (
         <div className="terminal">
             <div>
-                <pre >
+                <pre>
                     {entries.map((entry, index) => (
-                        <div key={index} style={{
-                            fontFamily: '"JetBrains Mono", monospace',
-                            fontSize: '16px',
-                        }}>
+                        <div
+                            key={index}
+                            style={{
+                                fontFamily: '"JetBrains Mono", monospace',
+                                fontSize: "16px",
+                            }}
+                        >
                             <span className="prompt">
-                                {props.username}@<span className="pkg">aoi.js</span> {">"}
+                                {props.username}@
+                                <span className="pkg">aoi.js</span> {">"}
                             </span>
                             <span className="input">{entry.inputValue}</span>
                             <br />
@@ -115,7 +146,6 @@ export default function Terminal(props:{
                     autoCorrect="off"
                     autoCapitalize="off"
                     spellCheck={false}
-
                 />
             </div>
         </div>

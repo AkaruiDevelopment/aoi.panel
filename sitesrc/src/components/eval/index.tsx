@@ -23,14 +23,13 @@ export default function Eval(
         setInput(e.target.value);
     };
 
-
     const submit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const res = await fetch(props.endpoint, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "authorization": `Bearer ${localStorage.getItem("token")}`,
+                authorization: `Bearer ${localStorage.getItem("token")}`,
             },
             body: JSON.stringify({ code: input }),
         });
@@ -46,24 +45,10 @@ export default function Eval(
     return (
         <Dialog open={props.open} onClose={props.updateOpen} className="login">
             <DialogTitle
-                sx={{
-                    "& .MuiTypography-root": {
-                        m: 0,
-                        p: 2,
-                        backgroundColor: "rgba(40,40,40,1)",
-                        color: "white",
-                    },
-                    backgroundColor: "rgba(40,40,40,1)",
-                    color: "white",
-                }}
             >
                 {props.title} Eval
             </DialogTitle>
             <DialogContent
-                sx={{
-                    backgroundColor: "rgba(40,40,40,1)",
-                    color: "white",
-                }}
             >
                 <TextField
                     autoFocus
@@ -77,27 +62,6 @@ export default function Eval(
                     required
                     value={input !== undefined ? input : undefined}
                     onChange={updateInput}
-                    sx={{
-                        "& .MuiInputBase-input": {
-                            color: "white",
-                        },
-                        backgroundColor: "rgba(40,40,40,1)",
-                        color: "white",
-
-                        caretColor: "white",
-                        "& .MuiInput-underline:before": {
-                            borderBottomColor: "white",
-                        },
-
-                        "& .MuiInput-underline:after": {
-                            borderBottomColor: "white",
-                        },
-
-                        "& .MuiInput-underline:hover:not(.Mui-disabled):before":
-                            {
-                                borderBottomColor: "white",
-                            },
-                    }}
                 />
                 <TextField
                     autoFocus
@@ -107,22 +71,13 @@ export default function Eval(
                     type="text"
                     fullWidth
                     multiline={true}
-                    variant="filled"
+                    variant='outlined'
                     value={output !== undefined ? output : undefined}
                     disabled={true}
                 />
             </DialogContent>
             <DialogActions
-                sx={{
-                    "& .MuiTypography-root": {
-                        m: 0,
-                        p: 2,
-                        backgroundColor: "rgba(40,40,40,1)",
-                        color: "white",
-                    },
-                    backgroundColor: "rgba(40,40,40,1)",
-                    color: "white",
-                }}
+
             >
                 <Button
                     onClick={(e) => {

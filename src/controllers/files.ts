@@ -56,7 +56,25 @@ export async function deleteFolder(dir: string) {
 }
 
 export async function getFileContent(dir: string) {
-    return await readFile(dir, "utf-8").catch((err) => {
+    const parsedPath = dir.replace("@root", process.cwd());
+    return await readFile(parsedPath, "utf-8").catch((err) => {
         throw err;
     });
+}
+
+export function createSourceGraph(base = process.cwd()) {
+    const Paths:unknown[] =[];
+    const paths = readdirSync(base);
+
+    for (const p of paths) {
+        const path = _path.join(base, p);
+        const stats = statSync(path);
+        Paths.push({
+            name: p,
+            path: path.replace(process.cwd(), "@root"),
+            type: stats.isDirectory() ? PathType.Folder : PathType.File,
+            children: stats.isDirectory() && (!p.startsWith(".") && !p.includes("node_modules")) ? createSourceGraph(path) : undefined,
+        });
+    }
+    return Paths;
 }

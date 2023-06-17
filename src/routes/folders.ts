@@ -1,6 +1,6 @@
 import { Router, RequestHandler } from "express";
-import { createFolder, deleteFolder } from "../controllers/files.js";
-import { AoiPanelRequest } from "../typings/interface";
+import { createFolder, createSourceGraph, deleteFolder } from "../controllers/files.js";
+import { AoiPanelRequest, SourceTreePath, graphData } from "../typings/interface.js";
 
 const router = Router();
 import checkAuth from "../middleware/checkAuth.js";
@@ -27,6 +27,13 @@ router.delete("/", async (req, res) => {
     await deleteFolder(dir);
 
     res.status(204);
+});
+
+router.get("/graph", (req, res) => {
+    const graph = createSourceGraph(process.cwd());
+    res.json({
+        data: graph,
+    });
 });
 
 export default router;

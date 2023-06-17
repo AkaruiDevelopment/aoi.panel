@@ -4,7 +4,7 @@ export default function BreakText(props: { text: string }) {
     const letters = props.text.split("");
 
     return (
-        <div className="breakText" id="bt">
+        <div className="aoibreakText" id="bt">
             {letters.map((letter, i) => {
                 const style = {
                     "--i":

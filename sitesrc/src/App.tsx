@@ -5,6 +5,7 @@ import Footer from "./components/footer";
 import { useState } from "react";
 import Panel from "./pages/panel";
 import Error from "./pages/404";
+import CodeEditor from "./pages/Editor";
 
 export default function App() {
     const [openForum, setOpenForum] = useState(false);
@@ -24,6 +25,7 @@ export default function App() {
                     }
                 />
                 <Route path="/panel" element={<Panel />} />
+                <Route path="/editor" element={<CodeEditor />} />
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />

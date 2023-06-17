@@ -34,3 +34,9 @@ export interface AoiPanelRequest extends express.Request {
     panel:Panel;
     user:Omit<UserData,"password">;
 }
+
+export interface graphData {
+    id: string;
+    name: string;
+    children: graphData[];
+}
